@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,10 +20,10 @@ namespace FinalVeloPro.Page
         private IWebElement priceOfBicycle => Driver.FindElement(By.Id("price-update"));
         private IWebElement cartLogo => Driver.FindElement(By.CssSelector("#user-profile-cart-block > div > div.cart-desktop.col-md-6 > div.cart-header > a"));
         private IWebElement addToCartButton => Driver.FindElement(By.Id("button-cart"));
-        //private IWebElement cartPrice => Driver.FindElement(By.CssSelector("#header-minicart-1 > div > table > tbody > tr:nth-child(3) > td.col-md-4.col-sm-5.cart-price.cart-total-text.text-right.vcenter.last"));
 
-        private IWebElement enterCart => Driver.FindElement(By.ClassName("minicart-buttons"));
-        
+        //private IWebElement enterCart => Driver.FindElement(By.ClassName("minicart-buttons"));
+
+        private SelectElement cartDropDown => new SelectElement(Driver.FindElement(By.CssSelector("#header-minicart-1")));
         
         
 
@@ -51,11 +52,11 @@ namespace FinalVeloPro.Page
         {
             addToCartButton.Click();
             cartLogo.Click();
-            
-            enterCart.Click();
-
-
-
+      
+        }
+        public void GotoCartselectByText(string text)
+        {
+            cartDropDown.SelectByText(text);
         }
 
            

@@ -44,9 +44,11 @@ namespace FinalVeloPro.Test
         [Test]
         public static void Test3ButtonTest()
         {
+            string text = "minicart-buttons";
             selectedBicyclePage.NavigateToDefaultPage();
             selectedBicyclePage.MinusAndPlusButton();
             selectedBicyclePage.CartButtons();
+            selectedBicyclePage.GotoCartselectByText(text);
             
         }
        
