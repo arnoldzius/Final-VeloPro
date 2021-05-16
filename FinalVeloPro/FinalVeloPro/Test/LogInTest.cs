@@ -12,46 +12,71 @@ namespace FinalVeloPro.Test
 {
     public class LogInTest : BaseTest
     {
-        
-        
         [Test]
-        public static void Test1Connection()
+        public static void T01Connection()
         {
-            string mail = "vincas88@yahoo.com";
-            string password = "slaptazodis88";
-            //string logOfText = "Atsijungti";
-
             frontPage.NavigateToDefaultPage();
+            frontPage.TurnOffCookies();
+            frontPage.EnterSalesPage();
+            frontPage.EnterDeliveryPage();
+            frontPage.EnterAboutUsPage();
             frontPage.EnterLogInSection();
             logInPage.NavigateToDefaultPage();
-            logInPage.Connect(mail, password);
-            
-            //logInPage.LogOff(logOfText);
-  
+            logInPage.Connect();
+            dviraciaiPage.ValidateUserLogoName();
+            dviraciaiPage.SelectBicycleTypeFromList();
         }
-
-     
-
-        
         [Test]
-        public static void Test2SelectFavoriteBicycle()
+        public static void T02SelectFavoriteBicycle()
         {
-            dviraciaiPage.SelectBicyclesBar();
             addToCartPage.NavigateToDefaultPage();
             addToCartPage.ClickOnSelectedBicycleButton();
-
         }
+
         [Test]
-        public static void Test3ButtonTest()
+        public static void T03GoToCart()
         {
-            string text = "minicart-buttons";
             selectedBicyclePage.NavigateToDefaultPage();
             selectedBicyclePage.MinusAndPlusButton();
-            selectedBicyclePage.CartButtons();
-            selectedBicyclePage.GotoCartselectByText(text);
-            
+            selectedBicyclePage.ValidateQuantity();
+            selectedBicyclePage.AddToCartButton();
+            selectedBicyclePage.ValidatePriceForTwo();
+            selectedBicyclePage.EnterToCart();
+            cartPage.DiscountFieldValidation();
+            cartPage.BuyAction();
+            cartPage.NavigateToDefaultPage();
+            cartPage.CompleteSearch();
         }
-       
-      
+
+        [Test]
+        public static void T04Disconnect()
+        {
+            afterSearchPage.NavigateToDefaultPage();
+            afterSearchPage.LogoTest();
+            frontPage.EnterLogInSection();
+            afterSearchPage.LogOff();
+            afterSearchPage.LogOffValidation();
+            afterSearchPage.GoToMainPage();
+        }
+
+        [Test]
+        public static void T05RegisterAndValidateNewAccount()
+        {
+            logInPage.NavigateToDefaultPage();
+            logInPage.NewAccRegisterButton();
+            registerNewAccountPage.Enterinformation();
+            registerNewAccountPage.ConfirmRegistration();
+            sucessfullNewRegistration.ValidateStatusOfRegistation();
+            sucessfullNewRegistration.GoWriteEmailForAdmin();
+        }
+
+       [Test]
+       public static void T06SendEmailForAdmin()
+       {
+            writeEmailForAdmin.NavigateToDefaultPage();
+            writeEmailForAdmin.EnterMessage();
+            writeEmailForAdmin.SendEmail();
+            writeEmailForAdmin.ValidateStatus();
+       }
     }
 }

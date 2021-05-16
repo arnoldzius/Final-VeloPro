@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using NUnit.Framework;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
@@ -11,9 +12,10 @@ namespace FinalVeloPro.Page
     public class DviraciaiPage : BasePage
     {
         private const string urlPage = "https://www.velopro.lt/account";
-
-        private IWebElement selectBicycles => Driver.FindElement(By.CssSelector("#primary-navigation > ul > li.dropdown > a"));
-        
+        private IWebElement userNameButton => Driver.FindElement(By.CssSelector("#user-profile-cart-block > div > div.user-block.col-md-6 > a"));
+        private IReadOnlyList<IWebElement> dviraciuTipai => Driver.FindElements(By.ClassName("dropdown"));
+        public DviraciaiPage(IWebDriver webdriver) : base(webdriver) { }
+       
 
         public void NavigateToDefaultPage()
         {
@@ -22,16 +24,14 @@ namespace FinalVeloPro.Page
                 Driver.Url = urlPage;
             }
         }
-
-        public DviraciaiPage(IWebDriver webdriver) : base(webdriver) { }
-       
-
-        public void SelectBicyclesBar()
+        public void SelectBicycleTypeFromList()
         {
-            selectBicycles.Click();
+            dviraciuTipai.First().Click();
         }
-
-  
-
+       public void ValidateUserLogoName()
+       {
+            string text = "Vincas";
+            Assert.IsTrue(text.Contains(userNameButton.Text));
+       }
     }
 }

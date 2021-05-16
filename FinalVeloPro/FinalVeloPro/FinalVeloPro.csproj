@@ -58,12 +58,16 @@
     <Compile Include="Driver\Browsers.cs" />
     <Compile Include="Driver\CustomDriver.cs" />
     <Compile Include="Page\AddToCartPage.cs" />
+    <Compile Include="Page\AfterSearchPage.cs" />
     <Compile Include="Page\BasePage.cs" />
     <Compile Include="Page\CartPage.cs" />
     <Compile Include="Page\DviraciaiPage.cs" />
     <Compile Include="Page\FrontPage.cs" />
     <Compile Include="Page\LogInPage.cs" />
+    <Compile Include="Page\RegisterNewAccountPage.cs" />
     <Compile Include="Page\SelectedBicyclePage.cs" />
+    <Compile Include="Page\SucessfullNewRegistration.cs" />
+    <Compile Include="Page\WriteEmailForAdmin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Test\BaseTest.cs" />
     <Compile Include="Test\LogInTest.cs" />

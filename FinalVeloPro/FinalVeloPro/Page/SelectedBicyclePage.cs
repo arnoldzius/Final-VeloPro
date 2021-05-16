@@ -13,21 +13,14 @@ namespace FinalVeloPro.Page
     public class SelectedBicyclePage : BasePage
     {
         private const string urlPage = "https://www.velopro.lt/dviraciai/26-xgsr-mtb-black-yellow-classic-3230-1";
-
-
         private IWebElement minusButton => Driver.FindElement(By.CssSelector("#product-right > div.product-cart > div:nth-child(1) > div.col-xs-6.quantity > div > span:nth-child(1)"));
         private IWebElement plusButton => Driver.FindElement(By.CssSelector("#product-right > div.product-cart > div:nth-child(1) > div.col-xs-6.quantity > div > span:nth-child(4)"));
-        private IWebElement priceOfBicycle => Driver.FindElement(By.Id("price-update"));
         private IWebElement cartLogo => Driver.FindElement(By.CssSelector("#user-profile-cart-block > div > div.cart-desktop.col-md-6 > div.cart-header > a"));
         private IWebElement addToCartButton => Driver.FindElement(By.Id("button-cart"));
-
-        //private IWebElement enterCart => Driver.FindElement(By.ClassName("minicart-buttons"));
-
-        private SelectElement cartDropDown => new SelectElement(Driver.FindElement(By.CssSelector("#header-minicart-1")));
-        
-        
-
-
+        private IWebElement quantityOfSelection => Driver.FindElement(By.Name("quantity"));
+        private IWebElement priceOfTwo => Driver.FindElement(By.CssSelector("#price-update"));
+        private IWebElement enterCart => Driver.FindElement(By.ClassName("minicart-buttons"));
+        public SelectedBicyclePage(IWebDriver webdriver) : base(webdriver) { }
 
 
         public void NavigateToDefaultPage()
@@ -38,33 +31,32 @@ namespace FinalVeloPro.Page
             }
         }
 
-        public SelectedBicyclePage(IWebDriver webdriver) : base(webdriver) { }
-
         public void MinusAndPlusButton()
         {
             plusButton.Click();
             plusButton.Click();
             minusButton.Click();
-            
-    
         }
-        public void CartButtons()
+        public void AddToCartButton()
         {
             addToCartButton.Click();
-            cartLogo.Click();
-      
         }
-        public void GotoCartselectByText(string text)
+        public void ValidateQuantity()
         {
-            cartDropDown.SelectByText(text);
+            string expectedValue = "2";
+            Assert.IsTrue(expectedValue.Contains(quantityOfSelection.Text));
         }
-
-           
-
-        
-
-
-
-
+        public void ValidatePriceForTwo()
+        {
+            string expectedPriceOfTwo = "€419.99";
+            GetWait().Until(ExpectedConditions.TextToBePresentInElement(priceOfTwo, expectedPriceOfTwo));
+            Assert.AreEqual(expectedPriceOfTwo, priceOfTwo.Text);
+        }
+        public void EnterToCart()
+        {
+            cartLogo.Click();
+            GetWait().Until(ExpectedConditions.ElementToBeClickable(enterCart));
+            enterCart.Click();
+        }
     }
 }
