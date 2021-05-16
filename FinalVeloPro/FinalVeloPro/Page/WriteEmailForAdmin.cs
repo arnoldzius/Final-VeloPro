@@ -14,8 +14,6 @@ namespace FinalVeloPro.Page
         private IWebElement messegaField => Driver.FindElement(By.Id("enquiry"));
         private IWebElement sendButton => Driver.FindElement(By.Name("send"));
         private IWebElement captchaTextError => Driver.FindElement(By.ClassName("text-danger"));
-        private IWebElement name => Driver.FindElement(By.Id("name"));
-        private IWebElement mail => Driver.FindElement(By.Id("email"));
         public WriteEmailForAdmin(IWebDriver webdriver) : base(webdriver) { }
         
         public void NavigateToDefaultPage()
@@ -25,13 +23,7 @@ namespace FinalVeloPro.Page
                 Driver.Url = urlPage;
             }
         }
-        
-         public void EnterMessage()
-        {
-            name.SendKeys("Boolan");
-            mail.SendKeys("Boolan@gmail.com");
-            messegaField.SendKeys("Here is a text of message");
-        }
+
         public void SendEmail()
         {
               sendButton.Click();

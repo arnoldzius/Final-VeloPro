@@ -74,7 +74,6 @@ namespace FinalVeloPro.Test
        public static void T06SendEmailForAdmin()
        {
             writeEmailForAdmin.NavigateToDefaultPage();
-            writeEmailForAdmin.EnterMessage();
             writeEmailForAdmin.SendEmail();
             writeEmailForAdmin.ValidateStatus();
        }

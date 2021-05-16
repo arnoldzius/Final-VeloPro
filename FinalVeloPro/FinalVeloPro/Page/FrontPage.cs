@@ -33,10 +33,6 @@ namespace FinalVeloPro.Page
             GetWait().Until(ExpectedConditions.ElementToBeClickable(cookies));
             cookies.Click();
         }
-        public void EnterLogInSection()
-        {
-            logInLogo.Click();
-        }
         public void EnterSalesPage()
         {
             saleButton.Click();
@@ -50,6 +46,12 @@ namespace FinalVeloPro.Page
         {
             aboutUsButton.Click();
         }
+        public void EnterLogInSection()
+        {
+            logInLogo.Click();
+        }
+      
+      
         
     }
 }
