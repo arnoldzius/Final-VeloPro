@@ -26,7 +26,8 @@ namespace FinalVeloPro.Page
 
         public void SendEmail()
         {
-              sendButton.Click();
+            messegaField.SendKeys("Here is a text of Admin");  
+            sendButton.Click();
         }
         public void ValidateStatus()
         {

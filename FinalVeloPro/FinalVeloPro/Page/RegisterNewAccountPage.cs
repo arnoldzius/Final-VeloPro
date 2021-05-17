@@ -41,9 +41,9 @@ namespace FinalVeloPro.Page
         {
             typeThreeOfCustomer.Click();
             typeTwoOfCustomer.Click();
-            firstname.SendKeys("Testas0007");
-            lastname.SendKeys("Testavicius0007");
-            email.SendKeys("testavicius0007@testasvimas.com");
+            firstname.SendKeys("Testas0009");
+            lastname.SendKeys("Testavicius0009");
+            email.SendKeys("testavicius0009@testasvimas.com");
             telephone.SendKeys("+3706000000");
             deliveryAdress.SendKeys("Testavimo gatvė");
             cityName.SendKeys("Testuoklis");
